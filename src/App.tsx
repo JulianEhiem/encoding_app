@@ -4,15 +4,20 @@ import { useQuery } from '@apollo/client';
 import {GET_ATHLETES} from "./schemas/queries/getAthletes";
 
 interface Athlete {
-    name: string;
-    sex: string;
-    specialty: string;
+    id : number,
+    firstname : string,
+    middleInitial : string,
+    lastname : string,
+    age : number,
+    country : string,
+    sport : string,
+    mainEvent : string,
 }
 
 function App() {
     const [athlete, setAthlete] = useState<Athlete | null>(null)
     const { loading, error } = useQuery(GET_ATHLETES, {onCompleted: (data) => {
-            setAthlete(data.athletes[0])
+            setAthlete(data.athletes[2])
         }});
 
     if (loading) return <p>Loading...</p>;
@@ -22,7 +27,7 @@ function App() {
   return (
           <div className="App">
               <header className="App-header">
-                  <h1 className="underline">Welcome to encoding app {athlete?.name || ''}</h1>
+                  <h1 className="underline">Welcome to encoding app {athlete?.firstname || ''}</h1>
               </header>
           </div>
 
