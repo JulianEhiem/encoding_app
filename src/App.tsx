@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { useQuery } from '@apollo/client';
 import {GET_ATHLETES} from "./schemas/queries/getAthletes";
+import {LeetCards} from "./components/LeetCards";
 
 interface Athlete {
     id : number,
@@ -28,6 +29,7 @@ function App() {
           <div className="App">
               <header className="App-header">
                   <h1 className="underline">Welcome to encoding app {athlete?.firstname || ''}</h1>
+                  <LeetCards />
               </header>
           </div>
 
