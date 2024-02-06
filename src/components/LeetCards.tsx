@@ -2,6 +2,7 @@ import React from 'react';
 // import * as fsrsJs from 'fsrs.js'
 import {FSRS, Card, Rating, State} from 'fsrs.js'
 import {LeetCard} from "./LeetCard";
+import {mockCards} from "../helpers/mockData";
 
 export type LeetCardDetails = {
     number: number;
@@ -30,13 +31,19 @@ export class ProblemCard extends Card implements LeetCardDetails{
 
 export const LeetCards = () => {
 
-    const cardDetails: LeetCardDetails = {
-        number: 174,
-        title: 'Binary Search',
-        description: 'Perform a binary search operation to get this job!',
-        level: 'hard',
-        tags: ['binary-search', 'array']
-    }
+    // const cardDetails: LeetCardDetails = {
+    //     number: 174,
+    //     title: 'Binary Search',
+    //     description: 'Perform a binary search operation to get this job!',
+    //     level: 'hard',
+    //     tags: ['binary-search', 'array']
+    // }
+
+    const mockCardsList = mockCards;
+
+    // const randomNumbers = [1,34,56453,4233,3,0,0.34,5384.34667, 7]
+    const cardDetails = mockCardsList[Math.floor(Math.random() * mockCardsList.length)];
+    console.log('random:', cardDetails)
 
     const fsrs = new FSRS();
     const card = new ProblemCard(cardDetails);
